@@ -1,23 +1,29 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main()
 {
     // Se declara la variable del nº de fechas
-    int numeroFechas;
-    printf("Indique el numero de fechas a consultar: ");
+    int numeroFechas, i;
     scanf("%d", &numeroFechas);
-    char fechas[numeroFechas][5];
-    for (int i = 0; i < numeroFechas; i++)
+    char *fechas[numeroFechas];
+    // Se almacenan las fechas indicadas
+    for (i = 0; i < numeroFechas; i++)
     {
-        printf("Indique la %dº fecha: ", i + 1);
-        scanf("%s", fechas[i]);
-        fflush(stdin);
+        fechas[i] = (char *)malloc(6 * sizeof(char));
+        scanf(" %5[^\n]", fechas[i]);
+        // Se comprueba si coincide con la fecha de navidad
+        if (strcmp("25 12", fechas[i]) == 0)
+        {
+            printf("SI\n");
+            free(fechas[i]); // Se libera memoria
+        }
+        else
+        {
+            printf("NO\n");
+            free(fechas[i]); // Se libera memoria
+        }
     }
-    for (int i = 0; i < numeroFechas; i++)
-    {
-        printf("%s\n", fechas[i]);
-    }
-    scanf("%d", &numeroFechas);
     return 0;
 }

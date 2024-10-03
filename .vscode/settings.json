@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "*.asm": "z80-asm",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "string.h": "c",
+        "stdlib.h": "c"
     }
 }
