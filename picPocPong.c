@@ -4,30 +4,27 @@
 
 int main()
 {
-    int numeroSonidos, i, puntuacionIzq, puntuacionDer, lado; // Lado = 0 derecha, 1 Izquierda
-
     while (1)
     {
+        int numeroSonidos, i, puntuacionIzq, puntuacionDer, lado; // Lado = 0 derecha, 1 Izquierda
         puntuacionIzq = 0;
         puntuacionDer = 0;
         lado = 0;
+        char sonidos[6];
         // Entrada número sonidos
         scanf("%d", &numeroSonidos);
-        // Array Jugada
-        char *sonidos[numeroSonidos];
         if (numeroSonidos == 0)
         {
             break;
         }
         for (i = 0; i < numeroSonidos; i++)
         {
-            sonidos[i] = (char *)malloc(6 * sizeof(char));
-            scanf("%s", sonidos[i]);
-            if (strcmp("PIC", sonidos[i]) == 0) // Un jugador le da
+            scanf("%s", sonidos);
+            if (strcmp("PIC", sonidos) == 0) // Un jugador le da
             {
                 lado = 1 - lado;
             }
-            else if (strcmp("PONG!", sonidos[i]) == 0) // Gol
+            else if (strcmp("PONG!", sonidos) == 0) // Gol
             {
                 if (lado == 0)
                 {
@@ -37,13 +34,9 @@ int main()
                 {
                     puntuacionDer++; // Gol del jugador de la derecha
                 }
-                lado = 0;
             }
         }
         printf("%d %d\n", puntuacionIzq, puntuacionDer);
-        for (i = 0; i < numeroSonidos; i++)
-        {
-            free(sonidos[i]);
-        }
     }
+    return 0;
 }
