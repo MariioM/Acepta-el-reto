@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class fotosConMafalda {
+public class FotosConMafalda {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,12 +29,10 @@ public class fotosConMafalda {
                     foto.add(nombre);
                 }
                 // Si esta mafalda en la foto y hay minimo 3 personajes, se hace la foto
-                System.out.println(foto.size());
-                if (foto.size() >= 3 && foto.contains("Mafalda")) {
-                    System.out.println("Foto hecha");
+                if (foto.size() > 3 && foto.contains("Mafalda")) {
                     numFotos++;
                     // Las personas que ya se han hecho la foto, se van de la cola
-                    i = 0;
+                    i = -1;
                     for (String persona : new ArrayList<>(foto)) {
                         Iterator<String> iterator = mural.iterator();
                         while (iterator.hasNext()) {
@@ -45,10 +43,12 @@ public class fotosConMafalda {
                         }
                     }
                     foto.clear();
+                    foto.add(null);
                 }
             }
-            foto.clear();
             System.out.println(numFotos + " " + mural.size());
+            foto.clear();
+            mural.clear();
         }
     }
 }
